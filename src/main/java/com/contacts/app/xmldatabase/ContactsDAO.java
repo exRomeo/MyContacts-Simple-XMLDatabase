@@ -6,7 +6,6 @@ import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.transform.TransformerException;
 import java.io.File;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 
 import static com.contacts.app.xmldatabase.ContactDoc.*;
@@ -15,39 +14,34 @@ public class ContactsDAO {
     private static List<Contact> contactsList;
     private static int current = 0;
 
-    public static List<Contact> getContactsList() {
-        if (contactsList == null) {
-            contactsList = new ArrayList<>();
-        }
-        return contactsList;
-    }
-
-    private static boolean isDuplicate(Contact contact) {
-        return contactsList.contains(contact);
-    }
-
     public static String getCurrent() {
-        return String.valueOf(current + 1);
+        if (contactsList.isEmpty()) {
+            return "0";
+        } else {
+            return String.valueOf(current + 1);
+        }
     }
 
     public static void addContact(Contact contact) {
         contactsList.add(contact);
-        current = 0;
+        current = contactsList.size() - 1;
     }
 
     public static void update(Contact updatedContact) {
-        contactsList.set(current, updatedContact);
+        if (contactsList.size() > 0)
+            contactsList.set(current, updatedContact);
     }
 
-    public static void delete(Contact contact) {
-        contactsList.remove(contact);
-        if(current >0) {
-            current--;
+    public static void delete() {
+        if (!contactsList.isEmpty()) {
+            contactsList.remove(current);
+            if (current > 0)
+                current--;
         }
     }
 
-    public static String totalContacts() {
-        return String.valueOf(contactsList.size());
+    public static int totalContacts() {
+        return contactsList.size();
     }
 
     public static void deleteAll() {
@@ -55,25 +49,18 @@ public class ContactsDAO {
         current = 0;
     }
 
-    public static Contact getFirst() {
-        return contactsList.get(0);
-    }
-
     public static void getNext() {
-        if (current + 1 < contactsList.size()) {
+        if (current + 1 < contactsList.size())
             current++;
-        }
     }
 
-    public static Contact getCurrentContact(){
+    public static Contact getCurrentContact() {
         return contactsList.get(current);
     }
 
-    public static Contact getPrev() {
-        if (current > 0) {
+    public static void getPrev() {
+        if (current > 0)
             current--;
-        }
-        return contactsList.get(current);
     }
 
     public static void loadContacts() throws IOException, ParserConfigurationException {
@@ -88,6 +75,16 @@ public class ContactsDAO {
     public static void unloadContacts() throws IOException, ParserConfigurationException, TransformerException {
         File file = createFile();
         docToContactsFile(contactListToDoc(contactsList), file);
+    }
+
+    public static void search(String name) {
+        if (contactsList.size() > 0) {
+            current = 0;
+            while (current + 1 < contactsList.size() && !contactsList.get(current).getName().equals(name)) {
+                System.out.println(current);
+                current++;
+            }
+        }
     }
 
     private static File createFile() throws IOException {

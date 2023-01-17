@@ -6,89 +6,115 @@
 <?import javafx.scene.control.MenuBar?>
 <?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.input.KeyCodeCombination?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="835.0" stylesheets="@../../../../Styling/StyleSheet.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.contacts.app.xmldatabase.ContactsController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="835.0" stylesheets="@Styling/StyleSheet.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.contacts.app.xmldatabase.ContactsController">
    <center>
-      <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
-         <children>
-            <Label fx:id="nameLabel" layoutX="42.0" layoutY="87.0" styleClass="fields-labels" stylesheets="@../../../../Styling/StyleSheet.css" text="Name     :">
-               <font>
-                  <Font size="18.0" />
-               </font>
-            </Label>
-            <TextField fx:id="nameField" layoutX="202.0" layoutY="87.0" prefHeight="30.0" prefWidth="600.0" />
-            <Label fx:id="phoneLable" layoutX="42.0" layoutY="167.0" styleClass="fields-labels" stylesheets="@../../../../Styling/StyleSheet.css" text="Phone    :">
-               <font>
-                  <Font size="18.0" />
-               </font>
-            </Label>
-            <TextField fx:id="emailField" layoutX="202.0" layoutY="127.0" prefHeight="30.0" prefWidth="600.0" />
-            <Label fx:id="emailLabel" layoutX="42.0" layoutY="127.0" styleClass="fields-labels" stylesheets="@../../../../Styling/StyleSheet.css" text="Email      :">
-               <font>
-                  <Font size="18.0" />
-               </font>
-            </Label>
-            <TextField fx:id="phoneField" layoutX="202.0" layoutY="167.0" prefHeight="30.0" prefWidth="600.0" />
-            <Label fx:id="addressLabel" layoutX="42.0" layoutY="207.0" styleClass="fields-labels" stylesheets="@../../../../Styling/StyleSheet.css" text="Address  :">
-               <font>
-                  <Font size="18.0" />
-               </font>
-            </Label>
-            <TextField fx:id="addressField" layoutX="202.0" layoutY="207.0" prefHeight="30.0" prefWidth="600.0" />
-            <Button layoutX="20.0" layoutY="306.0" mnemonicParsing="false" onAction="#newContact" prefHeight="39.0" prefWidth="68.0" stylesheets="@../../../../Styling/StyleSheet.css" text="New" />
-            <Button layoutX="135.0" layoutY="306.0" mnemonicParsing="false" onAction="#updateContact" stylesheets="@../../../../Styling/StyleSheet.css" text="Edit" />
-            <Button layoutX="480.0" layoutY="306.0" mnemonicParsing="false" onAction="#nextContact" text="Next" />
-            <Button layoutX="595.0" layoutY="306.0" mnemonicParsing="false" onAction="#prevContact" text="Previous" />
-            <Button layoutX="250.0" layoutY="306.0" mnemonicParsing="false" onAction="#deleteContact" text="Delete" />
-            <Button layoutX="365.0" layoutY="306.0" mnemonicParsing="false" text="Search" />
-            <Button layoutX="710.0" layoutY="306.0" mnemonicParsing="false" text="Delete All" />
-            <Label fx:id="noLabel" layoutX="42.0" layoutY="245.0" styleClass="small-labels" stylesheets="@../../../../Styling/StyleSheet.css" text="No.">
-               <font>
-                  <Font size="14.0" />
-               </font>
-            </Label>
-            <Label fx:id="currentLabel" layoutX="75.0" layoutY="245.0" styleClass="small-labels" stylesheets="@../../../../Styling/StyleSheet.css" text="10">
-               <font>
-                  <Font size="14.0" />
-               </font>
-            </Label>
-            <Label fx:id="ofLabel" layoutX="42.0" layoutY="265.0" styleClass="small-labels" stylesheets="@../../../../Styling/StyleSheet.css" text="of">
-               <font>
-                  <Font size="14.0" />
-               </font>
-            </Label>
-            <Label fx:id="totalLabel" layoutX="75.0" layoutY="265.0" styleClass="small-labels" stylesheets="@../../../../Styling/StyleSheet.css" text="20">
-               <font>
-                  <Font size="14.0" />
-               </font>
-            </Label>
-            <Label layoutX="284.0" layoutY="27.0" styleClass="title" stylesheets="@../../../../Styling/StyleSheet.css" text="XML Contacts Database" textAlignment="CENTER">
-               <font>
-                  <Font name="System Bold" size="24.0" />
-               </font>
-            </Label>
-         </children>
-      </AnchorPane>
+       <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+           <TextField editable="false" layoutX="202.0" layoutY="62.0" visible="false"/>
+           <Label fx:id="nameLabel" layoutX="42.0" layoutY="87.0" styleClass="fields-labels"
+                  stylesheets="@Styling/StyleSheet.css" text="Name     :">
+              <font>
+                  <Font size="18.0"/>
+              </font>
+           </Label>
+           <TextField fx:id="nameField" layoutX="202.0" layoutY="87.0" prefHeight="30.0" prefWidth="600.0"
+                      promptText="ex. John Doe"/>
+           <Label fx:id="emailLabel" layoutX="42.0" layoutY="127.0" styleClass="fields-labels"
+                  stylesheets="@Styling/StyleSheet.css" text="Email      :">
+              <font>
+                  <Font size="18.0"/>
+              </font>
+           </Label>
+           <TextField fx:id="emailField" layoutX="202.0" layoutY="127.0" prefHeight="30.0" prefWidth="600.0"
+                      promptText="ex. johndoe@domail.com"/>
+           <Label fx:id="phoneLabel" layoutX="42.0" layoutY="167.0" styleClass="fields-labels"
+                  stylesheets="@Styling/StyleSheet.css" text="Phone    :">
+              <font>
+                  <Font size="18.0"/>
+              </font>
+           </Label>
+           <TextField fx:id="phoneField" layoutX="202.0" layoutY="167.0" prefHeight="30.0" prefWidth="600.0"
+                      promptText="ex. 01234567890"/>
+           <Label fx:id="addressLabel" layoutX="42.0" layoutY="207.0" styleClass="fields-labels"
+                  stylesheets="@Styling/StyleSheet.css" text="Address  :">
+              <font>
+                  <Font size="18.0"/>
+              </font>
+           </Label>
+           <TextField fx:id="addressField" layoutX="202.0" layoutY="207.0" prefHeight="30.0" prefWidth="600.0"
+                      promptText="ex. El-Salam st. Sidi Gaber, Alexandria Governorate"/>
+           <Button fx:id="newButton" layoutX="20.0" layoutY="306.0" mnemonicParsing="false" onAction="#newContact"
+                   prefHeight="39.0" prefWidth="68.0" stylesheets="@Styling/StyleSheet.css" text="New"/>
+           <Button fx:id="editButton" layoutX="135.0" layoutY="306.0" mnemonicParsing="false" onAction="#updateContact"
+                   stylesheets="@Styling/StyleSheet.css" text="Edit"/>
+           <Button fx:id="deleteButton" layoutX="250.0" layoutY="306.0" mnemonicParsing="false"
+                   onAction="#deleteContact" text="Delete"/>
+           <Button fx:id="prevButton" layoutX="365.0" layoutY="306.0" mnemonicParsing="false" onAction="#prevContact"
+                   text="Previous"/>
+           <Button fx:id="searchButton" layoutX="480.0" layoutY="306.0" mnemonicParsing="false"
+                   onAction="#searchContact" text="Search"/>
+           <Button fx:id="nextButton" layoutX="595.0" layoutY="306.0" mnemonicParsing="false" onAction="#nextContact"
+                   text="Next"/>
+           <Button fx:id="deleteAllButton" layoutX="710.0" layoutY="306.0" mnemonicParsing="false"
+                   onAction="#deleteAllContacts" text="Delete All"/>
+           <Label fx:id="noLabel" layoutX="42.0" layoutY="245.0" styleClass="small-labels"
+                  stylesheets="@Styling/StyleSheet.css" text="No.">
+              <font>
+                  <Font size="14.0"/>
+              </font>
+           </Label>
+           <Label fx:id="currentLabel" layoutX="75.0" layoutY="245.0" styleClass="small-labels"
+                  stylesheets="@Styling/StyleSheet.css">
+              <font>
+                  <Font size="14.0"/>
+              </font>
+           </Label>
+           <Label fx:id="ofLabel" layoutX="42.0" layoutY="265.0" styleClass="small-labels"
+                  stylesheets="@Styling/StyleSheet.css" text="of">
+              <font>
+                  <Font size="14.0"/>
+              </font>
+           </Label>
+           <Label fx:id="totalLabel" layoutX="75.0" layoutY="265.0" styleClass="small-labels"
+                  stylesheets="@Styling/StyleSheet.css">
+              <font>
+                  <Font size="14.0"/>
+              </font>
+           </Label>
+           <Label layoutX="284.0" layoutY="27.0" styleClass="title" stylesheets="@Styling/StyleSheet.css"
+                  text="XML Contacts Database" textAlignment="CENTER">
+              <font>
+                  <Font name="System Bold" size="24.0"/>
+              </font>
+           </Label>
+       </AnchorPane>
    </center>
    <top>
-      <MenuBar stylesheets="@../../../../Styling/StyleSheet.css" BorderPane.alignment="CENTER">
+      <MenuBar stylesheets="@Styling/StyleSheet.css" BorderPane.alignment="CENTER">
         <menus>
           <Menu mnemonicParsing="false" style="-fx-text-fill: white;" text="File">
             <items>
-              <MenuItem fx:id="menuClose" mnemonicParsing="false" text="Close" />
+              <MenuItem fx:id="menuSave" mnemonicParsing="false" onAction="#saveButton" text="Save File">
+                     <accelerator>
+                        <KeyCodeCombination alt="UP" code="S" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
+                     </accelerator></MenuItem>
+                  <MenuItem fx:id="menuClose" mnemonicParsing="false" onAction="#exitButton" text="Close" />
             </items>
           </Menu>
           <Menu mnemonicParsing="false" text="Edit">
             <items>
-              <MenuItem fx:id="menuDelete" mnemonicParsing="false" text="Delete" />
+              <MenuItem fx:id="menuEdit" mnemonicParsing="false" onAction="#updateContact" text="Edit" />
+                  <MenuItem fx:id="menuDeleteAll" mnemonicParsing="false" onAction="#deleteAllContacts" text="Delete" />
+                  <MenuItem fx:id="menuDelete11" mnemonicParsing="false" onAction="#deleteContact" text="Delete All" />
             </items>
           </Menu>
           <Menu mnemonicParsing="false" text="Help">
             <items>
-              <MenuItem fx:id="menuHelp" mnemonicParsing="false" text="About" />
+              <MenuItem fx:id="menuHelp" mnemonicParsing="false" onAction="#aboutButton" text="About" />
             </items>
           </Menu>
         </menus>

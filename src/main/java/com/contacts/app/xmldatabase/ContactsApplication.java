@@ -23,7 +23,7 @@ public class ContactsApplication extends Application {
         stage.setTitle("My Contacts");
         stage.setScene(scene);
         stage.setResizable(false);
-        stage.getIcons().add(new Image("C:\\Users\\ramy3\\IdeaProjects\\XMLDatabase\\src\\main\\resources\\icons\\icon.png"));
+//        stage.getIcons().add(new Image("src/main/resources/com/contacts/app/xmldatabase/icons/icon.png"));
         stage.show();
     }
 
