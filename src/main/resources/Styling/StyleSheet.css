@@ -1,0 +1,33 @@
+.colorBlack {
+    -fx-background-color: #221f1f;
+}
+.colorLighterBlack {
+    -fx-background-color: #242726;
+}
+.colorCloserToGreen {
+    -fx-background-color: #2e3233;
+}
+.bluishGreen {
+    -fx-background-color: #263238;
+}
+.blue{
+
+    -fx-background-color: #26324a;
+}
+.fields-labels{
+    -fx-font-size: 18;
+}
+.small-labels{
+    -fx-font-size: 14;
+}
+.title{
+    -fx-font-size: 24;
+    -fx-font-weight: bold;
+}
+.button{
+    -fx-font-size: 18;
+    -fx-min-width: 105;
+    -fx-min-height: 35;
+    -fx-max-width: 105;
+    -fx-max-height: 35;
+}
