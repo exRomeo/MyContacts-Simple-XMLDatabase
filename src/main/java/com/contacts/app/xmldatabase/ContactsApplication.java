@@ -8,22 +8,31 @@ import javafx.stage.Stage;
 
 import javax.xml.parsers.ParserConfigurationException;
 import java.io.IOException;
+import java.net.URISyntaxException;
+import java.util.Objects;
 
 public class ContactsApplication extends Application {
     @Override
-    public void start(Stage stage) throws IOException {
+    public void start(Stage stage){
         try {
             ContactsDAO.loadContacts();
-        } catch (ParserConfigurationException e) {
+        } catch (ParserConfigurationException | IOException e) {
             System.out.println("Couldn't load Contacts");
             e.printStackTrace();
         }
         FXMLLoader fxmlLoader = new FXMLLoader(ContactsApplication.class.getResource("main-view.fxml"));
-        Scene scene = new Scene(fxmlLoader.load());
+        Scene scene;
+        try {
+            scene = new Scene(fxmlLoader.load());
+            stage.setScene(scene);
+            stage.getIcons().add(new Image(String.valueOf(Objects.requireNonNull(ContactsApplication.class.getResource("icon.png")).toURI())));
+        } catch (IOException | URISyntaxException e) {
+            System.out.println("Error Couldn't load files");
+        }
         stage.setTitle("My Contacts");
-        stage.setScene(scene);
         stage.setResizable(false);
-//        stage.getIcons().add(new Image("src/main/resources/com/contacts/app/xmldatabase/icons/icon.png"));
+
+        System.out.println();
         stage.show();
     }
 
