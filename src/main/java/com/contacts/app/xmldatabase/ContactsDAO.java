@@ -6,12 +6,13 @@ import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.transform.TransformerException;
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 import static com.contacts.app.xmldatabase.ContactDoc.*;
 
 public class ContactsDAO {
-    private static List<Contact> contactsList;
+    private static List<Contact> contactsList = new ArrayList<>();
     private static int current = 0;
 
     public static String getCurrent() {

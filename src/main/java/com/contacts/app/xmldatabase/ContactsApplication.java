@@ -13,27 +13,20 @@ import java.util.Objects;
 
 public class ContactsApplication extends Application {
     @Override
-    public void start(Stage stage){
+    public void start(Stage stage) {
+
         try {
+            FXMLLoader fxmlLoader = new FXMLLoader(ContactsApplication.class.getResource("main-view.fxml"));
+            Scene scene = new Scene(fxmlLoader.load());
+            stage.setScene(scene);
+            stage.getIcons().add(new Image(String.valueOf((Objects.requireNonNull(ContactsApplication.class.getResource("icon.png")).toURI()))));
+            stage.setTitle("My Contacts");
+            stage.setResizable(false);
             ContactsDAO.loadContacts();
-        } catch (ParserConfigurationException | IOException e) {
-            System.out.println("Couldn't load Contacts");
+            stage.show();
+        } catch (IOException | ParserConfigurationException | URISyntaxException e) {
             e.printStackTrace();
         }
-        FXMLLoader fxmlLoader = new FXMLLoader(ContactsApplication.class.getResource("main-view.fxml"));
-        Scene scene;
-        try {
-            scene = new Scene(fxmlLoader.load());
-            stage.setScene(scene);
-            stage.getIcons().add(new Image(String.valueOf(Objects.requireNonNull(ContactsApplication.class.getResource("icon.png")).toURI())));
-        } catch (IOException | URISyntaxException e) {
-            System.out.println("Error Couldn't load files");
-        }
-        stage.setTitle("My Contacts");
-        stage.setResizable(false);
-
-        System.out.println();
-        stage.show();
     }
 
     @Override
